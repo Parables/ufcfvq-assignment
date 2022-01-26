@@ -65,6 +65,19 @@ def arithmetic_mean(reducerFunction, iterable, sampleVariance =False):
 
 # FR2:
 def standard_deviation(mean ,iterable, sampleStandardDeviation= False):
+    """Calculates the Standard Deviation from an iterable.
+    NOTE: The same data MUST BE passed both the arithmetic_mean's iterable parameter and the standard_deviation's iterable parameter
+    NOTE: if sampleStandardDeviation is set to True, then iterable MUST BE a sample data not a population data
+
+    Args:
+        mean (function(reducerFunction, iterable, sampleVariance =False)): Uses the arithmetic_mean function to find the mean of the iterable
+        iterable ([type]): The iterable to performthe standard deviation calculations on
+        sampleStandardDeviation (bool, optional): If True, calculates a Sample Standard Deviation.
+            Otherwise calculates a Population Standard Deviation. Defaults to False.
+
+    Returns:
+        [type]: [description]
+    """
     squaredDifferenceList = x_diff_mean_squared(mean, iterable);
     return square_root(sampleVariance(squaredDifferenceList)) if sampleStandardDeviation else square_root(variance(squaredDifferenceList))
 
