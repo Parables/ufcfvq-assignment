@@ -1,3 +1,11 @@
+filename = "task1.csv"
+
+statKey ="Stats"
+
+extraSpace = 3
+
+statColumns = ["Count", "Mean", "Stdev","Min", "25th", "50th", "75th", "Max"]
+
 
 data = [ 6, 2, 22, 21, 24, 23, 8, 9, 5, 3, 11, 28, 14,
         13, 12, 26, 29, 16, 15, 20, 25, 1, 10, 18, 27, 19, 7]
