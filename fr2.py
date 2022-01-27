@@ -17,7 +17,7 @@ def standard_deviation(iterable, sampleStandardDeviation= False):
     """
     mean = arithmetic_mean(iterable)
     squaredDifferenceList = x_diff_mean_squared(iterable, mean);
-    return square_root(sampleVariance(squaredDifferenceList)) if sampleStandardDeviation \
+    return square_root(sampleVariance(squaredDifferenceList)) if (sampleStandardDeviation==True) \
         else square_root(variance(squaredDifferenceList));
 
 
@@ -32,7 +32,7 @@ def x_diff_mean_squared( iterable,mean):
     Returns:
         [type]: The squared difference of each element in the iterable and the mean
     """
-    return list(map(squared, iterable));
+    return list(map( lambda x: squared(x-mean), iterable));
 
 # Calculates the variance of a distribution
 def variance(squaredDifferenceList):

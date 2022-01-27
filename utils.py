@@ -1,5 +1,5 @@
 
-data = [6, 2, 22, 21, 24, 23, 8, 9, 5, 3, 11, 28, 14,
+data = [ 6, 2, 22, 21, 24, 23, 8, 9, 5, 3, 11, 28, 14,
         13, 12, 26, 29, 16, 15, 20, 25, 1, 10, 18, 27, 19, 7]
 
 # A lambda function that returns the sum of x and y
@@ -7,7 +7,22 @@ sum = lambda x, y: x+y;
 
 square_root = lambda n: n ** (1./2);
 
-squared = lambda x: (x-mean)**2
+squared = lambda x: x**2
+
+round_up_down = lambda x: int(x)if  (x-int(x)==0) else  int(x) + 1 if  ((x-int(x))>=0.5) else int(x) ;
+
+nearest_int = lambda x: int(x) if (x-int(x)==0) else int(x) + 1
+
+# def round_up_down(x):
+#     wholeNumber = int(x)
+#     difference = x-wholeNumber
+#     if(difference == 0):
+#         return x
+#     elif (difference >= 0.5):
+#         return wholeNumber + 1
+#     else:
+#         return wholeNumber
+
 
 # a lambda function that returns the reduce function which reduces a list into a single value by applying fn(defaults to sum) to each element
 reducer =lambda list,fn=sum : reduce( list, fn );
@@ -36,8 +51,6 @@ def reduce( iterable, function, initialValue=None):
     for currentElement in it:
         accumulator = function(accumulator, currentElement)
     return accumulator
-
-
 
 
 

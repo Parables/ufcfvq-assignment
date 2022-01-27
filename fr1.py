@@ -1,7 +1,7 @@
 from utils import reducer, sum
 
 # FR1:
-def arithmetic_mean( iterable,reducerFunction=reducer, sampleVariance =False):
+def arithmetic_mean( iterable,reducerFunction=reducer, sampleVariance =0):
     """Calculates the mean of an iterable
 
     Args:
@@ -13,4 +13,4 @@ def arithmetic_mean( iterable,reducerFunction=reducer, sampleVariance =False):
         [type]: Returns None if iterable is None, otherwise the mean of the iterable
     """
     if(len(iterable)==0): return None;
-    return reducerFunction(iterable, sum)/(len(iterable)-sampleVariance)
+    return reducerFunction(iterable, sum)/(len(iterable)-sampleVariance);
