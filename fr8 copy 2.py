@@ -11,8 +11,15 @@ def print_stats_table(columns=[], vBorderChar="|", hBorderChar="-",seperatorChar
     tableHeader = get_table_header(selectedColumns,vBorderChar, seperatorChar )
     lineLength = line_length(tableHeader)
     print_table_header(tableHeader, lineLength,hBorderChar )
-    # tableBody = get_table_rows(statColumns, statData, lineLength, vBorderChar, hBorderChar,seperatorChar)
-    # print_table_rows(tableBody)
+    tableBody = get_table_rows(statColumns, statData, lineLength, vBorderChar, hBorderChar,seperatorChar)
+    print_table_rows(tableBody)
+
+
+def get_row_(cells, vBorderChar="|",seperatorChar="|"):
+    row = ""
+    for (index,columns) in enumerate(cells):
+        row = left_aligned() center_aligned(column, seperatorChar, ) if index <(len(columns)-1) else right_aligned(column, vBorderChar,) 
+    return tableHeader
 
 def get_table_header(columns, vBorderChar="-",seperatorChar="|"):
     tableHeader = left_aligned("",vBorderChar, vBorderChar, 20 )
@@ -27,7 +34,7 @@ def print_table_header(tableHeader, lineLength, hBorderChar="-"):
     pass
 
 def categorize_data_by_stat(statColumns, statData):
-    result = {}.fromkeys(statColumns, [])
+    result = { r: [r] for (i,r) in enumerate(startColumns)}
     for (rowIndex, row) in enumerate(statColumns):
         for (cellIndex, cell) in enumerate(statData):
             result[row] = result[row] + [[cell, statData[cell][rowIndex]]]
@@ -57,16 +64,15 @@ align_r= lambda k,v, vBorderChar="|": right_aligned(str(v),vBorderChar, (len(k)+
 def print_table_rows(tableBody):
     print(tableBody)
 
-def  left_aligned(string,vBorderChar="|", seperatorChar="|",   extraSpace=extraSpace, fillchar=" "):
-    return vBorderChar + " " + string.ljust(len(string)+extraSpace, fillchar ) + seperatorChar
+def  left_aligned(string, width=None, vBorderChar="|", seperatorChar="|", extraSpace=extraSpace, fillchar=" "):
+    return vBorderChar + " " + string.ljust(len(string)+extraSpace if width is None else width, fillchar ) + seperatorChar
 
-def  right_aligned(string, vBorderChar="-",   extraSpace=extraSpace, fillchar=" "):
-    return string.rjust(len(string)+extraSpace, fillchar ) + " " + vBorderChar 
+def  right_aligned(string, width=None, vBorderChar="-", extraSpace=extraSpace, fillchar=" "):
+    return string.rjust(len(string)+extraSpace if width is None else width, fillchar ) + " " + vBorderChar 
 
 
-def  center_aligned(string,seperatorChar="|",   extraSpace=extraSpace, fillchar=" "):
-    # print("len= {0}, extraSpace={1}, total={2} ".format(len(string),extraSpace, len(string)+extraSpace))
-    return   string.center(len(string)+extraSpace, fillchar ) + seperatorChar
+def  center_aligned(string, width=None, seperatorChar="|", extraSpace=extraSpace, fillchar=" "):
+    return   string.center(len(string)+extraSpace if width is None else width, fillchar ) + seperatorChar
 
 
 sum_of_column_widths= lambda length, column: length + len(column)+extraSpace

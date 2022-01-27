@@ -2,7 +2,7 @@ filename = "task1.csv"
 
 statKey ="Stats"
 
-extraSpace = 3
+padding = 6
 
 statColumns = ["Count", "Mean", "Stdev","Min", "25th", "50th", "75th", "Max"]
 
