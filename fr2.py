@@ -1,4 +1,4 @@
-from fr1 import arithmetic_mean
+from fr1 import arithmetic_mean, reducer
 from utils import  squared, square_root
 
 # FR2:
@@ -40,4 +40,4 @@ def variance(squaredDifferenceList):
 
 # Calculates the sample variance of a distribution
 def sampleVariance(squaredDifferenceList):
-    return arithmetic_mean(squaredDifferenceList, True);
+    return arithmetic_mean(squaredDifferenceList, reducer , True);
