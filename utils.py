@@ -4,6 +4,10 @@ statKey ="Stats"
 
 padding = 6
 
+vBorderChar="|"
+hBorderChar="-"
+seperatorChar="-"
+
 statColumns = ["Count", "Mean", "Stdev","Min", "25th", "50th", "75th", "Max"]
 
 

@@ -1,4 +1,4 @@
-from utils import data, reducer, round_up_down, filename,statKey, statColumns, reduce, padding
+from utils import data, reducer, round_up_down, filename,statKey, statColumns, reduce, padding, vBorderChar, hBorderChar, seperatorChar
 from fr1 import arithmetic_mean
 from fr2 import standard_deviation
 from fr3 import min_max_count

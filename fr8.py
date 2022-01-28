@@ -1,7 +1,7 @@
-from library import generate_stats, filename, statKey, reduce, padding
+from library import generate_stats, filename, statKey, reduce, padding, vBorderChar, hBorderChar, seperatorChar
 
 
-def print_stats_table(columns=[], divideRows=False, padding=padding, vBorderChar="|", hBorderChar="-", seperatorChar="|"):
+def print_stats_table(columns=[], divideRows=False, padding=padding, vBorderChar=vBorderChar, hBorderChar=hBorderChar, seperatorChar=seperatorChar):
     statData = generate_stats(filename)
     statColumns = statData[statKey]
     del statData[statKey]
@@ -12,10 +12,10 @@ def print_stats_table(columns=[], divideRows=False, padding=padding, vBorderChar
                              selectedColumns, padding, vBorderChar, seperatorChar)
     lineLength = len(cells)
     print_row(cells, lineLength, hBorderChar)
-    print_table_body(statColumns, statData, widths, padding, lineLength, vBorderChar,divideRows, hBorderChar)
+    print_table_body(statColumns, statData, widths, padding, lineLength,divideRows, vBorderChar, hBorderChar, seperatorChar)
 
 
-def get_header_row(cells, padding, vBorderChar="|", seperatorChar="|"):
+def get_header_row(cells, padding, vBorderChar=vBorderChar, seperatorChar=seperatorChar):
     rows = ""
     widths = []
     for (index, cell) in enumerate(cells):
@@ -34,7 +34,7 @@ def get_header_row(cells, padding, vBorderChar="|", seperatorChar="|"):
     return rows, widths
 
 
-def get_body_row(cells,widths, padding, vBorderChar="|", seperatorChar="|" ):
+def get_body_row(cells,widths, padding, vBorderChar=vBorderChar, seperatorChar=seperatorChar ):
     rows = ""
     for (index, cell) in enumerate(cells):
         if(index == 0):
@@ -49,7 +49,7 @@ def get_body_row(cells,widths, padding, vBorderChar="|", seperatorChar="|" ):
     return rows
 
 
-def print_row(cells, lineLength, hBorderChar="-"):
+def print_row(cells, lineLength, hBorderChar=hBorderChar):
     print_line(lineLength, hBorderChar)
     print(cells)
     print_line(lineLength, hBorderChar)
@@ -66,16 +66,16 @@ def get_table_body(statColumns, statData):
     return result
 
 
-def print_table_body(statColumns, statData, widths, padding, lineLength,vBorderChar, divideRows=False, hBorderChar="-"):
+def print_table_body(statColumns, statData, widths, padding, lineLength,divideRows=False, vBorderChar=vBorderChar, hBorderChar=hBorderChar, seperatorChar=seperatorChar):
     rows = get_table_body(statColumns, statData)
     for cells in rows:
-        row = get_body_row(cells, widths, padding)
+        row = get_body_row(cells, widths, padding, vBorderChar,seperatorChar)
         print(row)
         if(divideRows): print_line(lineLength, "_")
     print_line(lineLength)
 
 
-def left_aligned(string, width=None, padding=padding, vBorderChar="|", seperatorChar="|", fillchar=" "):
+def left_aligned(string, width=None, padding=padding, vBorderChar=vBorderChar, seperatorChar=seperatorChar, fillchar=" "):
     cell = vBorderChar + " " + \
         string.ljust(
             len(string)+padding if width is None else width, fillchar) + seperatorChar
@@ -83,14 +83,14 @@ def left_aligned(string, width=None, padding=padding, vBorderChar="|", seperator
     return cell, width
 
 
-def right_aligned(string, width=None, padding=padding, vBorderChar="|", fillchar=" "):
+def right_aligned(string, width=None, padding=padding, vBorderChar=vBorderChar, fillchar=" "):
     cell = string.rjust(
         len(string)+padding if width is None else width, fillchar) + " " + vBorderChar
     width = len(cell) - len(vBorderChar)
     return cell, width
 
 
-def center_aligned(string, width=None, padding=padding, seperatorChar="|", fillchar=" "):
+def center_aligned(string, width=None, padding=padding, seperatorChar=seperatorChar, fillchar=" "):
     cell = string.center(
         len(string)+padding if width is None else width, fillchar) + seperatorChar
     width = len(cell) - len(seperatorChar)
